@@ -13,4 +13,22 @@
         android:id="@+id/map1"
         tilesource="Mapnik"
         />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:id="@+id/et1"
+        />
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent" android:layout_height="wrap_content">
+
+        <!--
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/btn1" android:text="@string/calculate" />
+            -->
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:id="@+id/tv1"/>
+
+    </LinearLayout>
 </LinearLayout>
