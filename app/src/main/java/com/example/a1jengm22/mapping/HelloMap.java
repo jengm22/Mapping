@@ -49,7 +49,7 @@ public class HelloMap extends Activity
     }
 
     // comment
-    
+
     public boolean onOptionsItemSelected(MenuItem item)
     {
         if(item.getItemId() == R.id.choosemap)
