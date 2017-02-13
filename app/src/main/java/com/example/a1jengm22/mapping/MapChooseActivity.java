@@ -1,19 +1,51 @@
 package com.example.a1jengm22.mapping;
 
-/**
- * Created by 1jengm22 on 06/02/2017.
- */
 import android.app.Activity;
-import android.os.Bundle;
 import android.content.Intent;
-import android.widget.Button;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.renderscript.Double3;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
-public class MapChooseActivity extends Activity {
+import org.osmdroid.config.Configuration;
+import org.osmdroid.views.MapView;
+import org.osmdroid.util.GeoPoint;
 
-    public void onCreate(Bundle savedInstanceState)
+
+    public class MapChooseActivity extends Activity implements View.OnClickListener
     {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.mca);
-    }
+        public void onCreate(Bundle savedInstanceState)
+
+        {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.mca);
+            Button regular = (Button) findViewById(R.id.btnRegular);
+            regular.setOnClickListener(this);
+            Button cyclemap = (Button) findViewById(R.id.btnCyclemap);
+            cyclemap.setOnClickListener(this);
+
+        }
+
+        public void onClick(View v)
+        {
+            Intent intent = new Intent();
+            Bundle bundle=new Bundle();
+            boolean cyclemap=false;
+            if (v.getId()==R.id.btnCyclemap)
+            {
+                cyclemap=true;
+            }
+            bundle.putBoolean("com.example.cyclemap",cyclemap);
+            intent.putExtras(bundle);
+            setResult(RESULT_OK,intent);
+            finish();
+
+
+        }
+
 }

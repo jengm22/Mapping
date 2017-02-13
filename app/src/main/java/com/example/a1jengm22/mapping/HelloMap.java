@@ -8,8 +8,11 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.views.MapView;
 import org.osmdroid.util.GeoPoint;
 
@@ -36,6 +39,8 @@ public class HelloMap extends Activity
         mv.getController().setZoom(14);
         mv.getController().setCenter(new GeoPoint(51.05,-0.72));
     }
+
+
     public boolean onCreateOptionsMenu(Menu menu)
     {
         MenuInflater inflater=getMenuInflater();
@@ -51,10 +56,42 @@ public class HelloMap extends Activity
            // System.exit(0); this code closes the app
 
             Intent intent = new Intent(this,MapChooseActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, 0);
+
+            return true;
+        }
+        else if(item.getItemId() == R.id.setlocation)
+        {
+            // react to the menu item being selected...
+            // System.exit(0); this code closes the app
+
+            Intent intent = new Intent(this,SetLocationActivity.class);
+            startActivityForResult(intent, 1);
 
             return true;
         }
         return false;
+    }
+
+    protected void onActivityResult(int requestCode,int resultCode,Intent intent)
+    {
+
+        if(requestCode==0)
+        {
+
+            if (resultCode==RESULT_OK)
+            {
+                Bundle extras=intent.getExtras();
+                boolean cyclemap = extras.getBoolean("com.example.cyclemap");
+                if(cyclemap==true)
+                {
+                    mv.setTileSource(TileSourceFactory.CYCLEMAP);
+                }
+                else
+                {
+                    mv.setTileSource(TileSourceFactory.MAPNIK);
+                }
+            }
+        }
     }
 }
