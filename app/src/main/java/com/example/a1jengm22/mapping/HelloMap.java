@@ -78,10 +78,10 @@ public class HelloMap extends Activity
     protected void onActivityResult(int requestCode,int resultCode,Intent intent)
     {
 
-        if(requestCode==0)
+        if(resultCode == RESULT_OK)
         {
 
-            if (resultCode==RESULT_OK)
+            if (requestCode == 0)
             {
                 Bundle extras=intent.getExtras();
                 boolean cyclemap = extras.getBoolean("com.example.cyclemap");
@@ -93,7 +93,15 @@ public class HelloMap extends Activity
                 {
                     mv.setTileSource(TileSourceFactory.MAPNIK);
                 }
+            }else if (requestCode == 1){
+
+                Bundle extras=intent.getExtras();
+                double longitude  = extras.getDouble("com.example.longitude");
+                double latitude= extras.getDouble("com.example.latitude");
+                extras.getDouble("com.example.longitude");
+                mv.getController().setCenter(new GeoPoint(latitude,longitude));
             }
         }
+
     }
 }
