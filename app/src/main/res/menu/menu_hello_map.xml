@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/choosemap" android:title="@string/choosemap"/>
-    <item android:id="@+id/setlocation" android:title="@string/setlocation"/>
+    <item android:id="@+id/setlocation" android:title="setlocation"/>
+    <item android:id="@+id/choosemapstyle" android:title="choose map style(list)"/>
 
 </menu>
