@@ -30,6 +30,9 @@
         <activity android:name=".SetLocationActivity" android:label="@string/setlocation">
         </activity>
 
+        <activity android:name=".MyPrefsActivity" android:label="@string/preferences">
+        </activity>
+
     </application>
 
 </manifest>

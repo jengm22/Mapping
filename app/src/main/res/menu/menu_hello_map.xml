@@ -3,5 +3,6 @@
     <item android:id="@+id/choosemap" android:title="@string/choosemap"/>
     <item android:id="@+id/setlocation" android:title="setlocation"/>
     <item android:id="@+id/choosemapstyle" android:title="choose map style(list)"/>
+    <item android:id="@+id/preferences" android:title="@string/preferences"/>
 
 </menu>

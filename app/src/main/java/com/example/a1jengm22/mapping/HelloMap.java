@@ -3,6 +3,7 @@ package com.example.a1jengm22.mapping;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -67,10 +68,15 @@ public class HelloMap extends Activity
             // react to the menu item being selected...
             // System.exit(0); this code closes the app
 
-            Intent intent = new Intent(this,SetLocationActivity.class);
+            Intent intent = new Intent(this, SetLocationActivity.class);
             startActivityForResult(intent, 1);
 
             return true;
+        }
+        else if(item.getItemId()== R.id.preferences)
+        {
+            Intent intent = new Intent(this,MyPrefsActivity.class);
+            startActivityForResult(intent, 2);
         }
         return false;
     }
@@ -103,5 +109,15 @@ public class HelloMap extends Activity
             }
         }
 
+    }
+    public void onStart()
+    {
+        super.onStart();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        double lat = Double.parseDouble ( prefs.getString("lat", "13.45") );
+        double lon = Double.parseDouble ( prefs.getString("lon", "-16.57") );
+        mv.getController().setCenter(new GeoPoint(lat,lon));
+
+        // do something with the preference data...
     }
 }
