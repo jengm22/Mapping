@@ -16,7 +16,7 @@ import org.osmdroid.config.Configuration;
 import org.osmdroid.views.MapView;
 import org.osmdroid.util.GeoPoint;
 
-
+//
     public class MapChooseActivity extends Activity implements View.OnClickListener
     {
         public void onCreate(Bundle savedInstanceState)
