@@ -77,6 +77,8 @@ public class HelloMap extends Activity
         {
             Intent intent = new Intent(this,MyPrefsActivity.class);
             startActivityForResult(intent, 2);
+
+            return true;
         }
         return false;
     }
@@ -99,7 +101,9 @@ public class HelloMap extends Activity
                 {
                     mv.setTileSource(TileSourceFactory.MAPNIK);
                 }
-            }else if (requestCode == 1){
+            }
+            else if (requestCode == 1)
+            {
 
                 Bundle extras=intent.getExtras();
                 double longitude  = extras.getDouble("com.example.longitude");
@@ -107,17 +111,24 @@ public class HelloMap extends Activity
                 extras.getDouble("com.example.longitude");
                 mv.getController().setCenter(new GeoPoint(latitude,longitude));
             }
+
         }
 
     }
+   @Override
     public void onStart()
     {
         super.onStart();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        double lat = Double.parseDouble ( prefs.getString("lat", "13.45") );
-        double lon = Double.parseDouble ( prefs.getString("lon", "-16.57") );
+        double lat = Double.parseDouble ( prefs.getString("lat", "50.9") );
+        double lon = Double.parseDouble ( prefs.getString("lon", "-1.4") );
+        int zoom = Integer.parseInt ( prefs.getString("zoom", "14") );
+
+        mv.getController().setZoom(zoom);
+
         mv.getController().setCenter(new GeoPoint(lat,lon));
 
         // do something with the preference data...
     }
+
 }

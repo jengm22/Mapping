@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditTextPreference android:key="lat" android:defaultValue="50.9"
-        android:title="Latitude" android:summary="Latitude to show the map at initially." />
-    <EditTextPreference android:key="lon" android:defaultValue="-1.4"
-        android:title="Longitude" android:summary="Longitude to show the map at initially." />
-    <EditTextPreference android:key="zoom" android:defaultValue="14"
-        android:title="Zoom" android:summary="Zoom to show the map at initially." />
+    <EditTextPreference
+        android:key="lat"
+        android:defaultValue="50.9"
+        android:title="Latitude"
+        android:summary="Initial latitude." />
+    <EditTextPreference
+        android:key="lon"
+        android:defaultValue="-1.4"
+        android:title="Longitude"
+        android:summary="Initial longitude." />
+    <EditTextPreference
+        android:key="zoom"
+        android:defaultValue="14"
+        android:title="Zoom"
+        android:summary="Zoom" />
+    <CheckBoxPreference
+        android:key="autodownload"
+        android:defaultValue="true"
+        android:title="Auto-download"
+        android:summary="Automatically downloads data ?" />
+
+    <ListPreference
+        android:key="pizza"
+        android:title="Pizza flavour"
+        android:summary="Choose your pizza flavour."
+        android:entries="@array/pizzaFlavours"
+        android:entryValues="@array/pizzaFlavourCodes" />
+
+
 
 </PreferenceScreen>
