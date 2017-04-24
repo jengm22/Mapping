@@ -76,32 +76,40 @@ public class HelloMap extends Activity
 
         OverlayItem kingFahadMosque = new OverlayItem("King_Fahad_Mosque", "Grand Mosque of Banjul", new GeoPoint(13.4570, -16.5828));
 
-
         try
         {
-        BufferedReader reader = new BufferedReader(new FileReader(Environment.getExternalStorageDirectory().getAbsolutePath()+"poi.txt"));
-        String line;
-        while((line = reader.readLine()) != null) {
-            String[] components = line.split("name,description,comments,latitude,longitude");
-            if (components.length == 5) {
-                Poi currentPoi = new Poi(components[0], components[1], components[2], components[3], components[4]);
-                Poi.add(currentPoi);
+            BufferedReader reader = new BufferedReader(new FileReader(Environment.getExternalStorageDirectory().getAbsolutePath()+"/poi.txt"));
+            String line;
+            while((line = reader.readLine()) != null)
+            {
+                String[] components = line.split(",");
+                if (components.length == 5)
+                {
+                    // Create an OverlayItem
+                    OverlayItem comp = new OverlayItem(components[0],components[2],new GeoPoint(Double.parseDouble(components[3]),
+                                                                                                Double.parseDouble(components[4])));
+
+                    // add to the map
+                    items.addItem(comp);
+
+
+                }
+
+                OverlayItem crown = new OverlayItem("The Crown", "nice pub", new GeoPoint(-1.4011, 50.9319));
+                OverlayItem Charlie_Chans = new OverlayItem("restaurant", "A very interesting place", new GeoPoint(-1.39916, 50.8983));
+
+                items.addItem(banjul);
+                items.addItem(kingFahadMosque);
+                items.addItem(crown);
+                items.addItem(Charlie_Chans);
+
+                mv.getOverlays().add(items);
             }
-
-            OverlayItem crown = new OverlayItem("The Crown", "PUB", "nice pub", new GeoPoint(-1.4011, 50.9319));
-            OverlayItem Charlie_Chans = new OverlayItem("restaurant", "A very interesting place", new GeoPoint(-1.39916, 50.8983));
-
-            items.addItem(banjul);
-            items.addItem(kingFahadMosque);
-            items.addItem(crown);
-            items.addItem(Charlie_Chans);
-
-            mv.getOverlays().add(items);
         }
-    }
-        catch(IOException e){
-        System.out.println("ERROR: " + e);
-
+        catch(IOException e)
+        {
+            System.out.println("ERROR: " + e);
+        }
     }
 
 
